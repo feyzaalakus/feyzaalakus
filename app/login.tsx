@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { Link, useRouter } from 'expo-router'; // useRouter doğru import edildi
+import { useRouter } from 'expo-router'; // sadece useRouter yeterli
 
 export default function LoginScreen() {
   const router = useRouter(); // yönlendirme için router tanımlandı
@@ -32,16 +32,21 @@ export default function LoginScreen() {
       <TouchableOpacity
         style={styles.loginButton}
         onPress={() => {
-          console.log('Giriş Yap butonuna basıldı'); // kontrol amaçlı
-          router.push('/register'); // yönlendirme yapılacak ekran
+          console.log('Giriş Yap butonuna basıldı');
+          router.push('/register'); // register ekranına yönlendirme
         }}
       >
         <Text style={styles.loginText}>Giriş Yap</Text>
       </TouchableOpacity>
 
-      <Link href="/" style={styles.forgotPassword}>
-        Şifremi Unuttum
-      </Link>
+      <TouchableOpacity
+        onPress={() => {
+          console.log('Şifremi Unuttum butonuna basıldı');
+          router.push('/forgot-password'); // forgot-password ekranına yönlendirme
+        }}
+      >
+        <Text style={styles.forgotPassword}>Şifremi Unuttum</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }

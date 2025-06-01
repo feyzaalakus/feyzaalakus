@@ -1,48 +1,76 @@
-import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function RegisterScreen() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+
+  const handleContinue = () => {
+    if (email.trim() !== '') {
+      router.replace('/home'); // Ana sayfaya yönlendirme
+    } else {
+      Alert.alert('Hata', 'Lütfen geçerli bir e-posta adresi girin.');
+    }
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Image source={require('../assets//splash-icon.png')} style={styles.icon} />
-
-      <Text style={styles.title}>MenTör</Text>
-
-      <Text style={styles.subtitle}>Destek olmaya ya da destek almaya başlamak için giriş yap</Text>
-
-      <Text style={styles.subTitle2}>Bir hesap oluşturun</Text>
-
-      <Text style={styles.instruction}>Bu uygulamaya kaydolmak için e-postanızı girin</Text>
-
-      <TextInput
-        placeholder="E-posta adresinizi girin"
-        placeholderTextColor="#aaa"
-        style={styles.input}
-        keyboardType="email-address"
-      />
-
-      <TouchableOpacity style={styles.continueButton}>
-        <Text style={styles.continueButtonText}>Devam Et</Text>
+    <View style={{ flex: 1 }}>
+      {/* Geri Butonu */}
+      <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+        <Image source={require('../assets/Icon/back-icon.png')} style={styles.backIcon} />
       </TouchableOpacity>
 
-      <Text style={styles.orText}>veya</Text>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Image source={require('../assets/splash-icon.png')} style={styles.icon} />
+        <Text style={styles.title}>MenTör</Text>
+        <Text style={styles.subtitle}>Destek olmaya ya da destek almaya başlamak için giriş yap</Text>
+        <Text style={styles.subTitle2}>Bir hesap oluşturun</Text>
+        <Text style={styles.instruction}>Bu uygulamaya kaydolmak için e-postanızı girin</Text>
 
-      <TouchableOpacity style={styles.socialButton}>
-        <Text style={styles.socialButtonText}>Google ile Giriş Yap</Text>
-      </TouchableOpacity>
+        <TextInput
+          placeholder="E-posta adresinizi girin"
+          placeholderTextColor="#aaa"
+          style={styles.input}
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-      <TouchableOpacity style={styles.socialButton}>
-        <Text style={styles.socialButtonText}>Apple ile Giriş Yap</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
+          <Text style={styles.continueButtonText}>Devam Et</Text>
+        </TouchableOpacity>
 
-      <Text style={styles.disclaimer}>
-        Devam'a tıklayarak Hizmet Şartlarımızı ve Gizlilik Politikamızı kabul etmiş olursunuz.
-      </Text>
-    </ScrollView>
+        <Text style={styles.orText}>veya</Text>
+
+        <View style={styles.socialContainer}>
+          <TouchableOpacity style={styles.socialButton}>
+            <Text style={styles.socialButtonText}>Google ile Giriş Yap</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.socialButton}>
+            <Text style={styles.socialButtonText}>Apple ile Giriş Yap</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.disclaimer}>
+          Devam'a tıklayarak Hizmet Şartlarımızı ve Gizlilik Politikamızı kabul etmiş olursunuz.
+        </Text>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  backButton: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    zIndex: 10,
+  },
+  backIcon: {
+    width: 28,
+    height: 28,
+  },
   container: {
     backgroundColor: '#BEA9BC',
     flexGrow: 1,
@@ -103,8 +131,13 @@ const styles = StyleSheet.create({
   },
   orText: {
     color: '#ccc',
-    marginVertical: 10,
+    marginTop: 20,
     fontSize: 14,
+  },
+  socialContainer: {
+    marginTop: 20,
+    width: '100%',
+    alignItems: 'center',
   },
   socialButton: {
     backgroundColor: '#E5E5E5',
