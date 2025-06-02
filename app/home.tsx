@@ -1,5 +1,13 @@
-import { View, Text, Image, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -25,21 +33,34 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.greeting}>Merhaba Feyza, bugün sana nasıl yardımcı olabiliriz?</Text>
+        <Text style={styles.greeting}>
+          Merhaba Feyza, bugün sana nasıl yardımcı olabiliriz?
+        </Text>
 
         <View style={styles.searchBox}>
           <Image source={require('../assets/Icon/Icon/Icon/Search.png')} style={styles.searchIcon} />
-          <TextInput placeholder="Kurs arat. . ." placeholderTextColor="#777" style={styles.searchInput} />
+          <TextInput
+            placeholder="Kurs arat. . ."
+            placeholderTextColor="#777"
+            style={styles.searchInput}
+          />
         </View>
       </View>
 
       {/* Kartlar */}
-      <TouchableOpacity style={styles.card}>
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => router.push('/study-groups')}
+      >
         <Image source={require('../assets/Icon/study-group.png')} style={styles.cardImage} />
         <Text style={styles.cardText}>Çalışma Grupları</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.card}>
+      {/* 👇 Mentörler kartına yönlendirme eklendi */}
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => router.push('/Mentorler')}
+      >
         <Image source={require('../assets/Icon/mentors.png')} style={styles.cardImage} />
         <Text style={styles.cardText}>Mentörler</Text>
       </TouchableOpacity>
@@ -76,7 +97,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginTop: 30, // LOGO biraz daha aşağıda başlıyor
+    marginTop: 30,
     marginBottom: 12,
   },
   logo: {
