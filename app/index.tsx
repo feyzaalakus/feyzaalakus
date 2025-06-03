@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    width: 136,
-    height: 136,
+    width: 100,
+    height: 100,
     borderRadius: 68,
     marginBottom: 20,
   },

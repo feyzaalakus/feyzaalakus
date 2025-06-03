@@ -65,10 +65,13 @@ export default function HomeScreen() {
         <Text style={styles.cardText}>Mentörler</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.card}>
-        <Image source={require('../assets/Icon/Icon/events.png')} style={styles.cardImage} />
-        <Text style={styles.cardText}>Etkinlikler</Text>
-      </TouchableOpacity>
+      <TouchableOpacity
+  style={styles.card}
+  onPress={() => router.push('/etkinlikler')} // ← yönlendirme eklendi
+>
+  <Image source={require('../assets/Icon/Icon/events.png')} style={styles.cardImage} />
+  <Text style={styles.cardText}>Etkinlikler</Text>
+</TouchableOpacity>
 
       <View style={styles.card}>
         <Image source={require('../assets/Icon/Icon/study-space.png')} style={styles.cardImage} />
