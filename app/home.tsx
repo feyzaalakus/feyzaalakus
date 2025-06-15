@@ -29,7 +29,7 @@ export default function HomeScreen() {
         {/* Menü */}
        <View style={styles.menuContainer}>
   <TouchableOpacity onPress={() => router.push('/profilim')}>
-    <Image source={require('../assets/Icon/Icon/Menu.png')} style={styles.menuIcon} />
+    <Image source={require('../assets/Icon/Icon/profile_kişi.png')} style={styles.menuIcon} />
   </TouchableOpacity>
 </View>
 
@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
     right: 20,
   },
   menuIcon: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
   },
   backButton: {
     position: 'absolute',

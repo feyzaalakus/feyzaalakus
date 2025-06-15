@@ -81,11 +81,11 @@ export default function AlyaKorelProfile() {
           <Image source={require('../assets/Icon/plus.png')} style={styles.tabAddIcon} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/notifications')} style={styles.tabItem}>
+        <TouchableOpacity onPress={() => router.push('/bildirimler')} style={styles.tabItem}>
           <Image source={require('../assets/Icon/Icon/Bell.png')} style={styles.tabIcon} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.push('/profile')} style={styles.tabItem}>
+        <TouchableOpacity onPress={() => router.push('/profilim')} style={styles.tabItem}>
           <Image source={require('../assets/Icon/Icon/profile.png')} style={styles.tabIcon} />
         </TouchableOpacity>
       </View>

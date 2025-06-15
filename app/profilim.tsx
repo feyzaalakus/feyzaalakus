@@ -21,10 +21,10 @@ export default function Profilim() {
   ];
 
   const settingsItems = [
-    { label: 'Yardım Destek', onPress: () => console.log('Yardım Destek tıklandı') },
-    { label: 'Bildirim Ayarları', onPress: () => console.log('Bildirim Ayarları tıklandı') },
-    { label: 'Uygulamayı Değerlendir', onPress: () => console.log('Uygulamayı Değerlendir tıklandı') },
-    { label: 'Çıkış Yap', onPress: () => console.log('Çıkış Yap tıklandı') },
+    { label: 'Yardım Destek', onPress: () => router.push('/yardim-destek') }, // Yönlendirme eklendi
+    { label: 'Bildirim Ayarları', onPress: () => router.push('/bildirim-ayarlari') }, // Yönlendirme eklendi
+    { label: 'Uygulamayı Değerlendir', onPress: () => router.push('/uygulamayi-degerlendir') }, // Yönlendirme eklendi
+    { label: 'Çıkış Yap', onPress: () => router.push('/cikis-yap') }, // Yönlendirme eklendi (örnek olarak, genellikle çıkış için farklı bir işlem yapılır)
   ];
 
   return (
@@ -122,10 +122,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   logo: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    // marginTop: 10, // Kaldırıldı, çünkü header zaten alignItems: 'center' ile ortalayacak
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+     marginTop: 12, // Kaldırıldı, çünkü header zaten alignItems: 'center' ile ortalayacak
   },
   welcomeCard: {
     flexDirection: 'row',
