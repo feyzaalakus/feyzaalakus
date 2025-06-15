@@ -115,6 +115,7 @@ import {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
+      minHeight: 100, // yükseklik tanımla, 80 veya daha büyük yapabilirsin 
     },
     icon: { width: 24, height: 24 },
     logo: { width: 60, height: 60, borderRadius: 30 },
@@ -123,11 +124,11 @@ import {
       fontSize: 18,
       fontWeight: 'bold',
       textAlign: 'center',
-      marginTop: 12,
+      marginTop: 20,
     },
     searchWrapper: {
       paddingHorizontal: 20,
-      marginTop: 10,
+      marginTop: 12,
     },
     searchBox: {
       flexDirection: 'row',

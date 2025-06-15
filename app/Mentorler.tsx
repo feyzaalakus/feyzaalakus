@@ -7,10 +7,22 @@ import {
     TouchableOpacity,
     ScrollView,
   } from 'react-native';
+
+
   import { useRouter } from 'expo-router';
   
+  const generateRouteFromName = (name: string) => {
+  const slug = name.toLowerCase().replace(/\s+/g, '-'); // örnek: "Cem Tepeli" → "cem-tepeli"
+  return `/Mentorler/${slug}`;
+};
+
   export default function MentorsScreen() {
     const router = useRouter();
+  
+    // İsimden route üret (örn: "Cem Tepeli" → "/cem-tepeli")
+    function generateRouteFromName(name: string): string {
+      return `/${name.toLowerCase().replace(/\s+/g, '-').replace('ç', 'c').replace('ı', 'i').replace('ö', 'o').replace('ş', 's').replace('ü', 'u').replace('ğ', 'g')}`;
+    }
   
     const mentors = [
       {
@@ -47,43 +59,42 @@ import {
   
     return (
       <View style={styles.container}>
-        {/* Üst Bar */}
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => router.back()} style={styles.iconButton}>
-            <Image source={require('../assets/Icon/back-icon.png')} style={styles.icon} />
+        <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
+          {/* Üst Bar */}
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => router.back()} style={styles.iconButton}>
+              <Image source={require('../assets/Icon/back-icon.png')} style={styles.icon} />
+            </TouchableOpacity>
+            <Image source={require('../assets/splash-icon.png')} style={styles.logo} />
+            <TouchableOpacity style={styles.iconButton}>
+              <Image source={require('../assets/Icon/Icon/Menu.png')} style={styles.icon} />
+            </TouchableOpacity>
+          </View>
+  
+          <Text style={styles.title}>Mentörler</Text>
+  
+          {/* Arama Kutusu */}
+          <View style={styles.searchBar}>
+            <Image source={require('../assets/Icon/Icon/büyüteç.png')} style={styles.searchIcon} />
+            <TextInput placeholder="Ara..." style={styles.searchInput} />
+            <TouchableOpacity>
+              <Image source={require('../assets/Icon/Icon/Edit.png')} style={styles.searchIcon} />
+            </TouchableOpacity>
+          </View>
+  
+          {/* Mentör Ol Butonu */}
+          <TouchableOpacity style={styles.mentorButton}>
+            <Text style={styles.mentorButtonText}>Mentör Ol</Text>
           </TouchableOpacity>
-          <Image source={require('../assets/splash-icon.png')} style={styles.logo} />
-          <TouchableOpacity style={styles.iconButton}>
-            <Image source={require('../assets/Icon/Icon/Menu.png')} style={styles.icon} />
-          </TouchableOpacity>
-        </View>
   
-        <Text style={styles.title}>Mentörler</Text>
-  
-        {/* Arama Kutusu */}
-        <View style={styles.searchBar}>
-          <Image source={require('../assets/Icon/Icon/büyüteç.png')} style={styles.searchIcon} />
-          <TextInput placeholder="Ara..." style={styles.searchInput} />
-          <TouchableOpacity>
-            <Image source={require('../assets/Icon/Icon/Edit.png')} style={styles.searchIcon} />
-          </TouchableOpacity>
-        </View>
-  
-        {/* Mentör Ol Butonu */}
-        <TouchableOpacity style={styles.mentorButton}>
-          <Text style={styles.mentorButtonText}>Mentör Ol</Text>
-        </TouchableOpacity>
-  
-        {/* Mentör Listesi */}
-        <ScrollView>
+          {/* Mentör Listesi */}
           {mentors.map((mentor, index) => (
             <TouchableOpacity
               key={index}
               style={styles.mentorCard}
               onPress={() => {
-                if (mentor.name === 'Cem Tepeli') {
-                  router.push('/cem-tepeli');
-                }
+                const route = generateRouteFromName(mentor.name);
+                router.push(route);
               }}
             >
               <Image source={mentor.avatar} style={styles.avatar} />

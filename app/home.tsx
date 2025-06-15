@@ -21,22 +21,25 @@ export default function HomeScreen() {
           <Image source={require('../assets/Icon/back-icon.png')} style={styles.backIcon} />
         </TouchableOpacity>
 
-        {/* Logoyu ortalamak için ayrı View */}
+        {/* Logo */}
         <View style={styles.logoContainer}>
           <Image source={require('../assets/splash-icon.png')} style={styles.logo} />
         </View>
 
-        {/* Menü ikonu sağ üstte kalıyor */}
-        <View style={styles.menuContainer}>
-          <TouchableOpacity>
-            <Image source={require('../assets/Icon/Icon/Menu.png')} style={styles.menuIcon} />
-          </TouchableOpacity>
-        </View>
+        {/* Menü */}
+       <View style={styles.menuContainer}>
+  <TouchableOpacity onPress={() => router.push('/profilim')}>
+    <Image source={require('../assets/Icon/Icon/Menu.png')} style={styles.menuIcon} />
+  </TouchableOpacity>
+</View>
 
+
+        {/* Karşılama metni */}
         <Text style={styles.greeting}>
           Merhaba Feyza, bugün sana nasıl yardımcı olabiliriz?
         </Text>
 
+        {/* Arama kutusu */}
         <View style={styles.searchBox}>
           <Image source={require('../assets/Icon/Icon/Icon/Search.png')} style={styles.searchIcon} />
           <TextInput
@@ -48,38 +51,25 @@ export default function HomeScreen() {
       </View>
 
       {/* Kartlar */}
-      <TouchableOpacity
-        style={styles.card}
-        onPress={() => router.push('/study-groups')}
-      >
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/study-groups')}>
         <Image source={require('../assets/Icon/study-group.png')} style={styles.cardImage} />
         <Text style={styles.cardText}>Çalışma Grupları</Text>
       </TouchableOpacity>
 
-      {/* 👇 Mentörler kartına yönlendirme eklendi */}
-      <TouchableOpacity
-        style={styles.card}
-        onPress={() => router.push('/Mentorler')}
-      >
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/Mentorler')}>
         <Image source={require('../assets/Icon/mentors.png')} style={styles.cardImage} />
         <Text style={styles.cardText}>Mentörler</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-  style={styles.card}
-  onPress={() => router.push('/etkinlikler')} // ← yönlendirme eklendi
->
-  <Image source={require('../assets/Icon/Icon/events.png')} style={styles.cardImage} />
-  <Text style={styles.cardText}>Etkinlikler</Text>
-</TouchableOpacity>
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/etkinlikler')}>
+        <Image source={require('../assets/Icon/Icon/events.png')} style={styles.cardImage} />
+        <Text style={styles.cardText}>Etkinlikler</Text>
+      </TouchableOpacity>
 
-      <View style={styles.card}>
+      <TouchableOpacity style={styles.card} onPress={() => router.push('/calisma-mekanlari')}>
         <Image source={require('../assets/Icon/Icon/study-space.png')} style={styles.cardImage} />
-        <TouchableOpacity style={styles.continueButton}>
-          <Text style={styles.continueButtonText}>Devam Et</Text>
-        </TouchableOpacity>
         <Text style={styles.cardText}>Çalışma Mekanları</Text>
-      </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -139,7 +129,7 @@ const styles = StyleSheet.create({
   searchBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f1e9f1',
+    backgroundColor: '##BEA9BC',
     borderRadius: 10,
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -174,18 +164,5 @@ const styles = StyleSheet.create({
     textShadowColor: '#000',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 3,
-  },
-  continueButton: {
-    position: 'absolute',
-    bottom: 50,
-    left: 16,
-    backgroundColor: '#BEA9BC',
-    paddingHorizontal: 16,
-    paddingVertical: 6,
-    borderRadius: 20,
-  },
-  continueButtonText: {
-    color: '#fff',
-    fontWeight: '600',
   },
 });

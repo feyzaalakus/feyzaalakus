@@ -5,10 +5,10 @@ export default function StudyGroupsScreen() {
   const router = useRouter();
 
   const groups = [
-    { title: 'Matematik', image: require('../assets/Icon/mathematics.jpg') },
-    { title: 'Fizik', image: require('../assets/Icon/physics.jpg') },
-    { title: 'Programlama', image: require('../assets/Icon/programming.jpg') },
-    { title: 'Eğitim Bilimleri', image: require('../assets/Icon/education.jpg') },
+    { title: 'Matematik', image: require('../assets/Icon/mathematics.jpg'), path: '/matematik-detay' },
+    { title: 'Fizik', image: require('../assets/Icon/physics.jpg'), path: '/Fizik-detay' },
+    { title: 'Programlama', image: require('../assets/Icon/programming.jpg'), path: '/programlama-detay' },
+    { title: 'Eğitim Bilimleri', image: require('../assets/Icon/education.jpg'), path: '/egitim-bilimleri-detay' },
   ];
 
   return (
@@ -35,7 +35,16 @@ export default function StudyGroupsScreen() {
 
       {/* Grup Kartları */}
       {groups.map((group, index) => (
-        <TouchableOpacity key={index} style={styles.card}>
+        <TouchableOpacity
+          key={index}
+          style={styles.card}
+          activeOpacity={group.path ? 0.7 : 1}
+          onPress={() => {
+            if (group.path) {
+              router.push(group.path);
+            }
+          }}
+        >
           <Image source={group.image} style={styles.cardImage} />
           <Text style={styles.cardText}>{group.title}</Text>
         </TouchableOpacity>
